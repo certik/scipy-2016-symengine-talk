@@ -54,11 +54,11 @@ interface, and at the same time allows many languages to naturaly use it.
 
 ## Resources
 
-SymEngine C++ library: https://github.com/symengine/symengine
-SymEngine Python wrappers (with SymPy and Sage integration): https://github.com/symengine/symengine.py
-SymEngine Ruby wrappers: https://github.com/symengine/symengine.rb
-SymEngine Julia wrappers: https://github.com/symengine/symengine.jl
-SymPy: http://sympy.org/
+* SymEngine C++ library: https://github.com/symengine/symengine
+* SymEngine Python wrappers (with SymPy and Sage integration): https://github.com/symengine/symengine.py
+* SymEngine Ruby wrappers: https://github.com/symengine/symengine.rb
+* SymEngine Julia wrappers: https://github.com/symengine/symengine.jl
+* SymPy: http://sympy.org/
 
 Evidence of public speaking ability: The first author has given talks at SciPy
 2007 and 2009, EuroSciPy 2008 and other conferences (PMAA'08, CSE09, FEMTEC
