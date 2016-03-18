@@ -63,6 +63,5 @@ interface, and at the same time allows many languages to naturaly use it.
 Evidence of public speaking ability: The first author has given talks at SciPy
 2007 and 2009, EuroSciPy 2008 and other conferences (PMAA'08, CSE09, FEMTEC
 2009, ESCO 2010, APS California-Nevada Section 2011, ...), we held a SymPy
-tutorial at SciPy 2013, and he has given other tutorials and seminars at
-various places (Los Alamos National Lab, CU Denver, University of Nevada Reno,
-...).
+tutorial at SciPy 2013, and he has given other talks, tutorials and seminars at
+various places (Los Alamos National Lab, Lawrence Berkeley National Lab, Lawrence Livermore National Lab, CU Denver, University of Nevada Reno, ...).
