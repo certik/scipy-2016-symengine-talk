@@ -8,6 +8,13 @@ Ondřej Čertík, ...
 
 # The Brief Description
 
+The goal of [SymEngine](https://github.com/symengine/symengine) is to be the
+fastest C++ symbolic manipulation library (opensource or commercial),
+compatible with SymPy, that can be used from many languages (Python, Ruby,
+Julia, ...). We will present the current status of development, how things are
+implemented internally, why we chose C++, benchmarks, and examples of usage
+from Python (SymPy and Sage), Ruby and Julia.
+
 # The Detailed Abstract
 
 ## Motivation
