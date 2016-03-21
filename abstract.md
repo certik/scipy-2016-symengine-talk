@@ -30,27 +30,27 @@ it can be cumbersome to use from other languages like Julia, Ruby, JavaScript
 or C++, because it requires, say, a Python to Julia bridge, which might not
 always be robust and which inflicts additional overhead.
 
+## Methods
+
 For these reasons, we implemented an open source C++ symbolic manipulation
 library called SymEngine, with the goal of being the fastest library for
 symbolic manipulation (opensource or commercial), and allowing natural wrappers
 to other languages like Python (the most mature wrapper), Ruby, Julia and
 others.
 
-## Methods
-
 SymEngine takes advantage of C++ to be able to customize data structures and
 memory accesses.
 
 ## Results
 
-We show benchmarks against other computer algebra systems (opensource and
+We will show benchmarks against other computer algebra systems (opensource and
 commercial) as well as examples of usage from Python (SymPy and Sage), Ruby and
 Julia. We will present a roadmap how to port SymPy on top of SymEngine.
 
 ## Conclusion
 
 SymEngine should fix the slowness of SymPy, while providing a familiar
-interface, and at the same time allows many languages to naturaly use it.
+interface, and at the same allowing many languages to naturaly use it.
 
 ## Resources
 
