@@ -4,7 +4,7 @@ SymEngine, a fast symbolic manipulation library
 
 # Authors
 
-Ondřej Čertík, ...
+Ondřej Čertík, Isuru Fernando
 
 # The Brief Description
 
