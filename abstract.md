@@ -4,7 +4,7 @@ SymEngine, a fast symbolic manipulation library
 
 # Authors
 
-Ondřej Čertík, Isuru Fernando, Thilina Rathnayake
+Ondřej Čertík, Isuru Fernando, Thilina Rathnayake, Abhinav Agarwal
 
 # The Brief Description
 
