@@ -110,9 +110,28 @@ Benchmarks were run in a Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
 
 \begin{frame}
 \frametitle{Benchmarks}
-\framesubtitle{PyDy}
+\framesubtitle{PyDy Benchmark}
 \end{frame}
 
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{PyDy Benchmark}
+\begin{table}
+\begin{tabular}{l | c | c | c  }
+n & SymEngine + SymPy & SymPy only & Speedup\\
+\hline \hline
+10 & 0.17 s & 5.58 s & 32.8x \\
+15 & 0.44 s & 22.07 s & 50.1x \\
+20 & 0.95 s & 45.59 s & 47.9x \\
+30 & 3.11 s & 162.80 s & 52.3x \\
+40 & 7.02 s & 427.16 s & 60.8x \\
+50 & 13.95 s & 915.83 s & 65.6x \\
+60 & 25.22 s & .......... & ...........
+\end{tabular}
+\caption{Results}
+\end{table}
+\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Examples of Usage}
