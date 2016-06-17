@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.pytxcode
+*.snm
+*.synctex.gz
+*.tex.backup
+*.toc
+*.vrb
+benchmarks/
