@@ -10,18 +10,152 @@
 
 \begin{document}
 
+
 \begin{frame}
 \maketitle
 \end{frame}
 
+
 \begin{frame}{Outline}
 \begin{block}{SymEngine}
 \begin{itemize}
-\item 1
-\item 2
-\item 3
+\item Introduction
+\item Why C++
+\item Internals of SymEngine
+\item SymPy, SymEngine and the interface
+\item Benchmarks
+\item Examples of usage
 \end{itemize}
 \end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Introduction}
+\framesubtitle{About SymEngine}
+\begin{itemize}
+\item Symbolic manipulation library written in C++
+\item Started in 2012
+\item 35 contributors
+\item Part of SymPy organization
+\item MIT licensed
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Introduction}
+\framesubtitle{Goals}
+\begin{itemize}
+\item Be the fastest in symbolic manipulation (opensource or commercial)
+\item Serve as the core for SymPy
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Why C++}
+\begin{itemize}
+\item SymPy speed is insufficient to handle very large expressions.
+\item Easier to create bindings to other languages like Python, Julia, Ruby and Haskell.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Internals of SymEngine}
+\begin{itemize}
+\item Depends on GNU Multiple Precision library (GMP)
+\item Optional dependencies include MPFR, MPC, Flint and Piranha
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Internals of SymEngine}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{SymPy, SymEngine and the interface}
+\begin{itemize}
+\item
+\begin{verbatim}
+>>> from sympy.core.backend import symbols, sin, diff
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{Modified GiNaC benchmark}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{Modified GiNaC benchmark}
+Benchmarks were run in a Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+\begin{itemize}
+ \item SymEngine 0.1.1 ??
+ \item GiNaC 1.6.6
+ \item SymPy 1.0
+ \item Mathematica 10.2.0.0
+ \item Maple 2015.2
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{PyDy Benchmark}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{PyDy Benchmark}
+\begin{table}
+\begin{tabular}{l | c | c | c  }
+n & SymEngine + SymPy & SymPy only & Speedup\\
+\hline \hline
+10 & 0.17 s & 5.58 s & 32.8x \\
+15 & 0.44 s & 22.07 s & 50.1x \\
+20 & 0.95 s & 45.59 s & 47.9x \\
+30 & 3.11 s & 162.80 s & 52.3x \\
+40 & 7.02 s & 427.16 s & 60.8x \\
+50 & 13.95 s & 915.83 s & 65.6x \\
+60 & 25.22 s & .......... & ...........
+\end{tabular}
+\caption{Results}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Examples of Usage}
+\framesubtitle{Python}
+
+\begin{verbatim}
+$ conda install python-symengine --channel conda-forge
+$ python
+>>> from symengine import *
+\end{verbatim}
+% add more example scripts above
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Examples of Usage}
+\framesubtitle{Julia}
+
+\begin{verbatim}
+julia> Pkg.clone("https://github.com/symengine/SymEngine.jl")
+julia> Pkg.build("SymEngine")
+julia> using SymEngine
+\end{verbatim}
+% add more example scripts above
 \end{frame}
 
 \end{document}
