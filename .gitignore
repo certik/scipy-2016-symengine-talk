@@ -9,4 +9,4 @@
 *.tex.backup
 *.toc
 *.vrb
-benchmarks/
+benchmarks/expand*
