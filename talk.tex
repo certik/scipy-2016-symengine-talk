@@ -91,6 +91,12 @@
 \begin{frame}
 \frametitle{Benchmarks}
 \framesubtitle{Modified GiNaC benchmark}
+\begin{itemize}  
+\item Let $e$ be the expanded sum of 2 symbols $\{a_0, a_1\}$ and $n-2$ trigonometric functions $\{sin(a_2), sin(a_3)...sin(a_n)\}$ squared:\\
+e $\leftarrow (a_0+a_1+\sum_{i=2}^{n} sin(a_i))^2$    
+\item Substitute $a_0 \leftarrow -\sum_{i=2}^{n} sin(a_i)$ 
+\item Expand $e$ again so it collapses to $a_1^2$
+\end{itemize}
 \end{frame}
 
 
