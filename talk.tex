@@ -21,6 +21,7 @@
 \begin{itemize}
 \item Introduction
 \item Why C++
+\item Features
 \item Internals of SymEngine
 \item SymPy, SymEngine and the interface
 \item Benchmarks
@@ -63,7 +64,18 @@
 
 
 \begin{frame}
+\frametitle{Features}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Features}
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Internals of SymEngine}
+\framesubtitle{Libraries used}
 \begin{itemize}
 \item Depends on GNU Multiple Precision library (GMP)
 \item Optional dependencies include MPFR, MPC, Flint and Piranha
@@ -73,12 +85,66 @@
 
 \begin{frame}
 \frametitle{Internals of SymEngine}
+\framesubtitle{How Add, Mul and Pow works}
 \end{frame}
 
+
+\begin{frame}
+\frametitle{Internals of SymEngine}
+\framesubtitle{Extensibility using visitor pattern}
+\end{frame}
 
 
 \begin{frame}[fragile]
 \frametitle{SymPy, SymEngine and the interface}
+\framesubtitle{Using SymPy in SymEngine}
+\begin{itemize}
+\item
+SymEngine will convert any SymPy object to a corresponding SymEngine object before doing any operation
+
+\begin{verbatim}
+>>> from symengine import symbols, Add
+>>> import sympy
+>>> x = symbols("x")
+>>> y = sympy.symbols("y")
+>>> x + y
+x + y
+>>> type(x+y)
+<type 'symengine.lib.symengine_wrapper.Add'>
+\end{verbatim}
+\item
+What if there is no corresponding SymEngine object?
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{SymPy, SymEngine and the interface}
+\framesubtitle{Using SymPy in SymEngine}
+\begin{itemize}
+\item
+SymEngine will keep a reference to a SymPy object if there is no corresponding SymEngine object using Python/C API.
+SymEngine will use Python callbacks to evaluate the SymPy object
+
+\begin{verbatim}
+
+>>> e = x + sympy.loggamma(x)
+>>> assert str(e) == "x + loggamma(x)"
+>>> assert isinstance(e, Add)
+
+>>> f = e.subs({x : 10})
+>>> assert f == 10 + log(362880)
+
+>>> f = e.subs({x : 2})
+>>> assert f == 2
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{SymPy, SymEngine and the interface}
+\framesubtitle{Using SymEngine in SymPy}
 \begin{itemize}
 \item
 \begin{verbatim}
@@ -86,6 +152,8 @@
 \end{verbatim}
 \end{itemize}
 \end{frame}
+
+
 
 
 \begin{frame}
@@ -97,6 +165,13 @@ e $\leftarrow (a_0+a_1+\sum_{i=2}^{n} sin(a_i))^2$
 \item Substitute $a_0 \leftarrow -\sum_{i=2}^{n} sin(a_i)$ 
 \item Expand $e$ again so it collapses to $a_1^2$
 \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{Modified GiNaC benchmark}
+<< insert plot here >>
 \end{frame}
 
 
