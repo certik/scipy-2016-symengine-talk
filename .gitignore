@@ -10,3 +10,5 @@
 *.toc
 *.vrb
 benchmarks/expand*
+images/
+.ipynb_checkpoints
