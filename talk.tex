@@ -66,8 +66,16 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Features}
+\framesubtitle{Symbolic differentiation in SymEngine}
+\begin{verbatim}
+>>> x = Symbol("x")
+>>> y = Symbol("y")
+>>> r = x*y+x
+>>> gamma(r).diff(x)
+(1 + y)*gamma(x + x*y)*polygamma(0, x + x*y)
+\end{verbatim}
 \end{frame}
 
 
