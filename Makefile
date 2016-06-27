@@ -1,8 +1,8 @@
 all: tex
 
 tex: images
-	pdflatex talk.tex
-	pdflatex talk.tex
+	pdflatex --halt-on-error talk.tex
+	pdflatex --halt-on-error talk.tex
 
 images: benchmarks/data.json benchmarks/gen_images.py
 	mkdir -p images
