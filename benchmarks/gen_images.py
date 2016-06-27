@@ -17,7 +17,7 @@ def generate_images():
         plt.ylabel('Time in ms')
         plt.title("Benchmark "+name)
         lgd = plt.legend(loc='center right', bbox_to_anchor=(1.4, 0.5))
-        plt.savefig('../images/%s.png' % name, dpi=1000, bbox_extra_artists=(lgd,), bbox_inches='tight')
+        plt.savefig('../images/%s.pdf' % name, bbox_extra_artists=(lgd,), bbox_inches='tight')
         plt.clf()
 
 if __name__ == '__main__':

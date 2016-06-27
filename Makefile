@@ -1,6 +1,6 @@
-all: images tex
+all: tex
 
-tex:
+tex: images
 	pdflatex talk.tex
 	pdflatex talk.tex
 
