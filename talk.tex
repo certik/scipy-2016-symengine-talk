@@ -52,19 +52,76 @@
 \frametitle{Introduction}
 \framesubtitle{Goals}
 \begin{itemize}
-\item Be the fastest in symbolic manipulation (opensource or commercial)
-\item Serve as the core for SymPy
+\item Be the fastest symbolic manipulation library (opensource or commercial)
+\item Serve as the core for SymPy and Sage
+\item Serve as the default symbolic manipulation library in other languages
+    thanks to thin wrappers (Python, Ruby, Julia, ...)
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Why C++}
+\frametitle{What language to use}
+\begin{block}{Problem}
+SymPy speed is sometimes insufficient
 \begin{itemize}
-\item SymPy speed is insufficient to handle very large expressions.
+\item Handling of very large expressions
+\item Large calculations using small/medium size expressions
+\end{itemize}
+\end{block}
+
+\begin{block}{Let's fix that}
+\begin{itemize}
+\item We tried: pure Python/PyPy, Cython, C
+\item Investigated Julia, Rust, Scala, Javascript, ...
+\item Chose C++
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Why Pure C++}
+\begin{itemize}
+\item \textbf{Fast} in Release mode, but safe in Debug mode
+\item Compiler helps (not as good as Scala or Haskell, but much better than
+    Python)
+\item Just one language to learn, thus easy to maintain (as opposed to several
+    intertwined layers such as C + Cython + Python)
+\item Thin wrappers (that core developers do not need to maintain), all functionality in C++
 \item Easier to create bindings to other languages like Python, Julia, Ruby and Haskell.
 \end{itemize}
 \end{frame}
+
+\begin{frame}
+\frametitle{Why Pure C++: Fast in Release Mode}
+\begin{itemize}
+    \item Allows direct memory handling (allocation, deallocation, access)
+    \item Allows to tweak how and when things are done
+    \item It is possible to go to bare metal
+    \item Allows reasonably high level abstractions (simple, maintainable
+        code)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why Pure C++: Safe in Debug Mode}
+\begin{itemize}
+    \item Reference counted pointers \texttt{Teuchos::RCP} (from Trilinos)
+    \item Checks for dangling and null pointers (exception is raised)
+    \item No raw pointers/references (use \texttt{Ptr} and \texttt{RCP})
+    \item Use a safe subset of C++
+    \item Few other rules, e.g. how to use \texttt{Ptr} and \texttt{RCP}
+          properly
+    \item Possible to visually verify in a PR (pull request) review
+    \item Hopefully eventually there are plugins to Clang to check
+        automatically (since the rules are simple and static)
+    \item As fast as raw pointers in Release mode (but it could segfault)
+\end{itemize}
+    Conclusion: the code cannot segfault or have undefined behavior in Debug
+    mode --- always get an exception at runtime, or a compile error.
+\end{frame}
+
 
 
 \begin{frame}[fragile]
