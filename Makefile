@@ -6,4 +6,4 @@ tex: images
 
 images: benchmarks/data.json benchmarks/gen_images.py
 	mkdir -p images
-	cd benchmarks; python gen_images.py
+	cd benchmarks; jupyter nbconvert --execute  --to notebook Plots.ipynb
