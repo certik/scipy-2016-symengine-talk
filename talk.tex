@@ -224,6 +224,39 @@ SymEngine will use Python callbacks to evaluate the SymPy object
 
 
 
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{Fateman benchmark}
+\begin{itemize}
+\item $ e = (x + y + z + w) ^ n $
+\item $ f = e * (e + w) $
+\item Measure time taken for expanding $f$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{Fateman benchmark}
+\includegraphics[width=10cm]{expand2}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{Fateman benchmark}
+Benchmarks were run in a Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+\begin{itemize}
+ \item SymEngine master
+ \item GiNaC 1.6.6
+ \item SymPy 1.0
+ \item Mathematica 10.2.0.0
+ \item Maple 2015.2
+\end{itemize}
+\end{frame}
+
+
 
 \begin{frame}
 \frametitle{Benchmarks}
@@ -263,21 +296,6 @@ t2 = clock()
 \framesubtitle{Modified GiNaC benchmark}
 \includegraphics[width=10cm]{expand6b}
 \end{frame}
-
-
-\begin{frame}
-\frametitle{Benchmarks}
-\framesubtitle{Modified GiNaC benchmark}
-Benchmarks were run in a Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
-\begin{itemize}
- \item SymEngine master
- \item GiNaC 1.6.6
- \item SymPy 1.0
- \item Mathematica 10.2.0.0
- \item Maple 2015.2
-\end{itemize}
-\end{frame}
-
 
 \begin{frame}
 \frametitle{Benchmarks}
