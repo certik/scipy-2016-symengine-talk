@@ -292,10 +292,10 @@ Benchmarks were run in a Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
 \begin{frame}
 \frametitle{Benchmarks}
 \framesubtitle{Modified GiNaC benchmark}
-\begin{itemize}  
-\item Let $e$ be the expanded sum of 2 symbols $\{a_0, a_1\}$ and $n-2$ trigonometric functions $\{sin(a_2), sin(a_3)...sin(a_n)\}$ squared:\\
-e $\leftarrow (a_0+a_1+\sum_{i=2}^{n} sin(a_i))^2$    
-\item Substitute $a_0 \leftarrow -\sum_{i=2}^{n} sin(a_i)$ 
+\begin{itemize}
+\item Let $e$ be the expanded sum of 2 symbols $\{a_0, a_1\}$ and $n-2$ trigonometric functions $\{sin(a_2), sin(a_3)...sin(a_{n-1})\}$ squared:\\
+e $\leftarrow (a_0+a_1+\sum_{i=2}^{n-1} sin(a_i))^2$
+\item Substitute $a_0 \leftarrow -\sum_{i=2}^{n-1} sin(a_i)$
 \item Expand $e$ again so it collapses to $a_1^2$
 \end{itemize}
 \end{frame}
@@ -325,6 +325,16 @@ t2 = clock()
 \frametitle{Benchmarks}
 \framesubtitle{Modified GiNaC benchmark}
 \includegraphics[width=10cm]{expand6b}
+\end{frame}
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{GiNaC benchmark}
+\begin{itemize}
+\item Let $e$ be the expanded sum of n symbols $\{a_0, a_1 ... a_{n-1}\}$squared: e $\leftarrow (\sum_{i=0}^{n-1} a_i)^2$
+\item Substitute $a_0 \leftarrow -\sum_{i=2}^{n-1} a_i$
+\item Expand $e$ again so it collapses to $a_1^2$
+\end{itemize}
 \end{frame}
 
 \begin{frame}
