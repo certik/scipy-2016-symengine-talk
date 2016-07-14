@@ -79,6 +79,37 @@ SymPy speed is sometimes insufficient
 \end{frame}
 
 
+
+
+\begin{frame}
+\frametitle{Features}
+\begin{itemize}
+    \item Core
+    \item Elementary Functions
+    \item Matrices
+    \item Polynomials
+    \item Series expansion
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Features}
+\framesubtitle{Symbolic differentiation in SymEngine}
+\begin{verbatim}
+>>> x = Symbol("x")
+>>> y = Symbol("y")
+>>> r = x*y+x
+>>> gamma(r).diff(x)
+(1 + y)*gamma(x + x*y)*polygamma(0, x + x*y)
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Features}
+\end{frame}
+
 \begin{frame}
 \frametitle{Why Pure C++}
 \begin{itemize}
@@ -119,36 +150,6 @@ SymPy speed is sometimes insufficient
 \end{itemize}
     Conclusion: the code cannot segfault or have undefined behavior in Debug
     mode --- always get an exception at runtime, or a compile error.
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Features}
-\begin{itemize}
-    \item Core
-    \item Elementary Functions
-    \item Matrices
-    \item Polynomials
-    \item Series expansion
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Features}
-\framesubtitle{Symbolic differentiation in SymEngine}
-\begin{verbatim}
->>> x = Symbol("x")
->>> y = Symbol("y")
->>> r = x*y+x
->>> gamma(r).diff(x)
-(1 + y)*gamma(x + x*y)*polygamma(0, x + x*y)
-\end{verbatim}
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Features}
 \end{frame}
 
 
