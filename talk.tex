@@ -47,6 +47,8 @@
 \item MIT licensed
 \item Started in 2012
 \item 35 contributors
+\item Runs on Linux (GCC, Clang, Intel), OS X (GCC, Clang), Windows (MSVC,
+    MinGW, MinGW-w64)
 \item Part of the SymPy organization, but the C++ library is Python independent
 \end{itemize}
 \end{frame}
@@ -151,23 +153,35 @@ SymPy speed is sometimes insufficient
 
 \begin{frame}
 \frametitle{Internals of SymEngine}
-\framesubtitle{Libraries used}
+\framesubtitle{How Add, Mul and Pow works}
 \begin{itemize}
-\item Depends on GNU Multiple Precision library (GMP)
-\item Optional dependencies include MPFR, MPC, Flint and Piranha
+    \item Add uses \texttt{std::unordered\_map} (hashtable)
+        \begin{itemize}
+            \item $2xy^2+3x^2y + 5\to \{xy^2: 2, x^2y: 3\}; coeff=5 $
+        \end{itemize}
+    \item Mul uses \texttt{std::map} (red-black tree)
+        \begin{itemize}
+            \item $2 xy^2 \to \{x: 1, y:2\}; coeff=2$
+        \end{itemize}
+    \item Pow just stores the base and exponent
+    \item Each object is reference counted (RCP), very fast implementation in
+        Release mode
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Internals of SymEngine}
-\framesubtitle{How Add, Mul and Pow works}
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Internals of SymEngine}
 \framesubtitle{Extensibility using visitor pattern}
+\begin{itemize}
+    \item All algorithms implemented using visitor pattern
+    \item Algorithm is implemented in its own file, separate from the core
+    \item Two virtual function calls (can be implemented in third party code or
+        user code)
+    \item Special version with just one virtual function call (faster, but must
+        be compiled as part of the SymEngine source code)
+    \item The speed difference between the two is minor
+\end{itemize}
 \end{frame}
 
 
@@ -226,6 +240,11 @@ SymEngine will use Python callbacks to evaluate the SymPy object
 \begin{verbatim}
 >>> from sympy.core.backend import symbols, sin, diff
 \end{verbatim}
+\item Most things can be used unmodified
+\item Few things are fundamentally different (e.g. SymPy stores \texttt{I} as
+    \texttt{ImaginaryUnit}, SymEngine has a \texttt{Complex} class)
+\item We will have a compatibility layer, probably similar to Python 2 and 3
+    support using the same source base.
 \end{itemize}
 \end{frame}
 
@@ -408,6 +427,39 @@ n & SymEngine + SymPy & SymPy only & Speedup\\
 \frametitle{Benchmarks}
 \framesubtitle{PyDy Benchmark}
 \includegraphics[width=10cm]{pydy}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+ \item SymEngine aims to be the fastest C++ symbolic manipulation library
+ \item Thin wrappers to other languages (Python, Ruby, Julia, ...)
+ \item Easily usable as an optional backend in SymPy (and Sage)
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{}
+{\Large\bf Thank You}
+\medskip
+
+GitHub:
+\begin{itemize}
+\item \texttt{https://github.com/symengine/symengine}
+\item \texttt{https://github.com/symengine/symengine.py}
+\item \texttt{https://github.com/symengine/symengine.rb}
+\item \texttt{https://github.com/symengine/symengine.jl}
+\end{itemize}
+Mailinglist:
+\begin{itemize}
+\item \texttt{http://groups.google.com/group/symengine}
+\end{itemize}
+Gitter:
+\begin{itemize}
+\item \texttt{https://gitter.im/symengine/symengine}
+\end{itemize}
 \end{frame}
 
 \end{document}
