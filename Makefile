@@ -6,4 +6,5 @@ tex: images
 
 images: benchmarks/data.json benchmarks/Plots.ipynb
 	mkdir -p images
+	cp pdfs/n-pendulum-with-cart.pdf images/n-pendulum-with-cart.pdf
 	cd benchmarks; jupyter nbconvert --execute  --to notebook Plots.ipynb

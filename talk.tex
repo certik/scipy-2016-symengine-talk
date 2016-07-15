@@ -231,51 +231,13 @@ SymEngine will use Python callbacks to evaluate the SymPy object
 
 
 
+
 \begin{frame}
 \frametitle{Benchmarks}
-\framesubtitle{expand7 benchmark}
+\framesubtitle{Benchmark setup}
+Benchmarks were run in a Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz running Ubuntu 16.04 with gcc 5.4.0
 \begin{itemize}
-\item $ e = (1+\sqrt{3}*x+ \sqrt{5}*y)^n $
-\item $ f = e*(e+\sqrt{7}) $
-\item Measure time taken for expanding $f$
-\end{itemize}
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Benchmarks}
-\framesubtitle{expand7 benchmark}
-\includegraphics[width=10cm]{expand7}
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Benchmarks}
-\framesubtitle{Fateman benchmark}
-\begin{itemize}
-\item $ e = (x + y + z + w) ^ n $
-\item $ f = e * (e + w) $
-\item Measure time taken for expanding $f$
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Benchmarks}
-\framesubtitle{Fateman benchmark}
-\includegraphics[width=10cm]{expand2}
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Benchmarks}
-\framesubtitle{Fateman benchmark}
-Benchmarks were run in a Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
-\begin{itemize}
- \item SymEngine master
+ \item SymEngine master (with GMP and FLINT)
  \item GiNaC 1.6.6
  \item SymPy 1.0
  \item Mathematica 10.2.0.0
@@ -283,6 +245,72 @@ Benchmarks were run in a Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
 \end{itemize}
 \end{frame}
 
+% Commented for now.
+
+%\begin{frame}
+%\frametitle{Benchmarks}
+%\framesubtitle{expand7 benchmark}
+%\item $ e = (1+\sqrt{3}*x+ \sqrt{5}*y)^n $
+%\item $ f = e*(e+\sqrt{7}) $
+%\item Measure time taken for expanding $f$
+%\end{itemize}
+%\end{frame}
+
+
+%\begin{frame}
+%\frametitle{Benchmarks}
+%\framesubtitle{expand7 benchmark}
+%\includegraphics[width=10cm]{expand7}
+%\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Benchmarks}
+\framesubtitle{Expand benchmark}
+\begin{itemize}
+\item $ e = (x + y + z + w) ^ n $
+\item $ f = e * (e + w) $
+\item Measure time taken for expanding $f$
+\linebreak
+\item
+\begin{verbatim}
+using SymEngine
+using TimeIt
+
+@vars x y z w
+n = 30
+e = (x + y + z + w)^n
+f = e * (e + w)
+@timeit expand(f)
+\end{verbatim}
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{Expand benchmark}
+\includegraphics[width=10cm]{expand2}
+\end{frame}
+
+
+%\begin{frame}
+%\begin{frame}[fragile]
+%\frametitle{Benchmarks}
+%\framesubtitle{GiNaC benchmark}
+%\begin{itemize}
+%\item Let $e$ be the expanded sum of n symbols $\{a_0, a_1 ... a_{n-1}\}$squared: e $\leftarrow (\sum_{i=0}^{n-1} a_i)^2$
+%\item Substitute $a_0 \leftarrow -\sum_{i=2}^{n-1} a_i$
+%\item Expand $e$ again so it collapses to $a_1^2$
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Benchmarks}
+%\framesubtitle{GiNaC benchmark}
+%\includegraphics[width=10cm]{expand6}
+%\end{frame}
 
 
 \begin{frame}
@@ -323,25 +351,28 @@ t2 = clock()
 \includegraphics[width=10cm]{expand6b}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Benchmarks}
-\framesubtitle{GiNaC benchmark}
+\framesubtitle{SymEngine Benchmark}
 \begin{itemize}
-\item Let $e$ be the expanded sum of n symbols $\{a_0, a_1 ... a_{n-1}\}$squared: e $\leftarrow (\sum_{i=0}^{n-1} a_i)^2$
-\item Substitute $a_0 \leftarrow -\sum_{i=2}^{n-1} a_i$
-\item Expand $e$ again so it collapses to $a_1^2$
+\item Series expansion of $sin(cos(x+1))$ around $x=0$
+\linebreak
+\item
+\begin{verbatim}
+RCP<const Symbol> x = symbol("x");
+int n = 15;
+RCP<const Basic> ex = sin(cos(add(integer(1), x)));
+auto t1 = std::chrono::high_resolution_clock::now();
+RCP<const Basic> res = series(ex, x, n);
+auto t2 = std::chrono::high_resolution_clock::now();
+\end{verbatim}
+
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Benchmarks}
-\framesubtitle{GiNaC benchmark}
-\includegraphics[width=10cm]{expand6}
-\end{frame}
-
-\begin{frame}
-\frametitle{Benchmarks}
-\framesubtitle{symengine bench}
+\framesubtitle{SymEngine Benchmark}
 \includegraphics[width=10cm]{symengine_bench}
 \end{frame}
 
@@ -349,6 +380,7 @@ t2 = clock()
 \begin{frame}
 \frametitle{Benchmarks}
 \framesubtitle{PyDy Benchmark}
+\includegraphics[width=10cm]{n-pendulum-with-cart}
 \end{frame}
 
 
@@ -370,6 +402,14 @@ n & SymEngine + SymPy & SymPy only & Speedup\\
 \caption{Results}
 \end{table}
 \end{frame}
+
+
+\begin{frame}
+\frametitle{Benchmarks}
+\framesubtitle{PyDy Benchmark}
+\includegraphics[width=10cm]{pydy}
+\end{frame}
+
 
 \begin{frame}[fragile]
 \frametitle{Examples of Usage}
