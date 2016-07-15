@@ -39,10 +39,15 @@
 \framesubtitle{About SymEngine}
 \begin{itemize}
 \item Symbolic manipulation library written in C++
+\item Thin wrappers to Python, Ruby, Julia, ...
+\item \texttt{https://github.com/symengine/symengine}
+\item \texttt{https://github.com/symengine/symengine.py}
+\item \texttt{https://github.com/symengine/symengine.rb}
+\item \texttt{https://github.com/symengine/symengine.jl}
+\item MIT licensed
 \item Started in 2012
 \item 35 contributors
-\item Part of SymPy organization
-\item MIT licensed
+\item Part of the SymPy organization, but the C++ library is Python independent
 \end{itemize}
 \end{frame}
 
@@ -82,33 +87,24 @@ SymPy speed is sometimes insufficient
 
 
 \begin{frame}
-\frametitle{Features}
+\frametitle{Current Features}
 \begin{itemize}
-    \item Core
-    \item Elementary Functions
+    \item Core (symbols, +, -, *, /, **)
+    \item Elementary Functions (sin, cos, Gamma, Erf)
+    \item Differentiation, substitution
     \item Matrices
-    \item Polynomials
+    \item Polynomials (Piranha, Flint)
     \item Series expansion
+    \item Printing, parsing
+    \item Numeric evaluation (double/arbitrary precision)
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}[fragile]
-\frametitle{Features}
-\framesubtitle{Symbolic differentiation in SymEngine}
-\begin{verbatim}
->>> x = Symbol("x")
->>> y = Symbol("y")
->>> r = x*y+x
->>> gamma(r).diff(x)
-(1 + y)*gamma(x + x*y)*polygamma(0, x + x*y)
-\end{verbatim}
-\end{frame}
-
-
 \begin{frame}
-\frametitle{Features}
+\frametitle{Demo}
+{\Large\bf Demo Time}
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Why Pure C++}
