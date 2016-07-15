@@ -151,23 +151,29 @@ SymPy speed is sometimes insufficient
 
 \begin{frame}
 \frametitle{Internals of SymEngine}
-\framesubtitle{Libraries used}
+\framesubtitle{How Add, Mul and Pow works}
 \begin{itemize}
-\item Depends on GNU Multiple Precision library (GMP)
-\item Optional dependencies include MPFR, MPC, Flint and Piranha
+    \item Add uses \texttt{std::unordered\_map} (hashtable)
+    \item Mul uses \texttt{std::map} (red-black tree)
+    \item Pow just stores the base and exponent
+    \item Each object is reference counted (RCP), very fast implementation in
+        Release mode
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Internals of SymEngine}
-\framesubtitle{How Add, Mul and Pow works}
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Internals of SymEngine}
 \framesubtitle{Extensibility using visitor pattern}
+\begin{itemize}
+    \item All algorithms implemented using visitor pattern
+    \item Algorithm is implemented in its own file, separate from the core
+    \item Two virtual function calls (can be implemented in third party code or
+        user code)
+    \item Special version with just one virtual function call (faster, but must
+        be compiled as part of the SymEngine source code)
+    \item The speed difference between the two is minor
+\end{itemize}
 \end{frame}
 
 
