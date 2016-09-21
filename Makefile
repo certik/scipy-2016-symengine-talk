@@ -1,6 +1,10 @@
-all: tex
+all: paper
 
-tex: images
+paper: images
+	pdflatex --halt-on-error paper.tex
+	pdflatex --halt-on-error paper.tex
+
+talk: images
 	pdflatex --halt-on-error talk.tex
 	pdflatex --halt-on-error talk.tex
 
