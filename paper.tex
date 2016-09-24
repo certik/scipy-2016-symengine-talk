@@ -1,0 +1,97 @@
+%% Submissions for peer-review must enable line-numbering
+%% using the lineno option in the \documentclass command.
+%%
+%% Preprints and camera-ready submissions do not need
+%% line numbers, and should have this option removed.
+%%
+%% Please note that the line numbering option requires
+%% version 1.1 or newer of the wlpeerj.cls file.
+
+\documentclass[fleqn,10pt,lineno,numbers]{wlpeerj} % for journal submissions
+% \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[scaled=0.8]{DejaVuSansMono}
+
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{amsmath}
+\usepackage{caption}
+\graphicspath{ {images/} }
+
+% Makes quote characters in monospace font not be curly
+\usepackage{upquote}
+
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{hyperref}
+
+% this is required for all the \url{} commands in the bib file
+%\usepackage{hyperref}
+
+% for nice units
+\usepackage{siunitx}
+
+% for images: png, pdf, etc
+\usepackage{graphicx}
+
+% for nice table formatting, i.e., /toprule, /midrule, etc
+\usepackage{booktabs}
+
+% to allow for \verb++ declarations in captions.
+\usepackage{cprotect}
+
+% to allow usage of \mathbb symbols
+\usepackage{amssymb}
+
+\usepackage{longtable}
+
+\usepackage{listings}
+
+\newcommand\email[1]{\href{mailto:#1}{#1}}
+\title{SymEngine}
+
+\input{authors}
+
+\keywords{symbolic, C++11, computer algebra system}
+
+\begin{abstract}
+SymEngine is a symbolic manipulation library written in C++ that aims to be the fastest
+in symbolic manipulation (opensource or commercial). SymEngine is compatible with SymPy,
+and can be used from many languages (Python, Ruby, Julia, ...). We will present the
+current status of development, how things are implemented internally, why we chose C++,
+benchmarks, and examples of usage from Python (SymPy and Sage), Ruby and Julia.
+\end{abstract}
+
+\begin{document}
+
+\flushbottom
+\maketitle
+\thispagestyle{empty}
+
+\section{Introduction}
+\input{introduction}
+
+\section{Architecture}
+\label{sec:architecture}
+
+\section{Features}
+\label{sec:features}
+
+\section{Numerics}
+\label{sec:numerics}
+
+\section{Conclusion and future work}
+\label{sec:conclusion}
+
+
+\section{Acknowledgements}
+\label{sec:acknowledgements}
+
+
+\bibliography{paper}
+
+\end{document}

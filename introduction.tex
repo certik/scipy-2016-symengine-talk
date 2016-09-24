@@ -1,0 +1,14 @@
+
+SymPy is a widely used symbolic manipulation library in Python. While SymPy turns out to be
+very useful for many applications, one of the long term problems with SymPy is that the
+speed might be insufficient when handling of very large expressions is required. Another
+problem with SymPy is that due to being written in Python, it can be cumbersome to use
+from other languages like Julia, Ruby, JavaScript or C++, because it requires, say, a Python
+to C++ bridge, which might not always be robust and which inflicts additional overhead.
+
+We will show benchmarks against other computer algebra systems (opensource and commercial)
+as well as examples of usage. We will present a roadmap on porting SymPy on top of SymEngine.
+We will talk about why we chose C++ and what rules to follow so that the code cannot have an
+undefined behavior in Debug mode (thus providing similar ease of development as one is used
+to from Python).
+

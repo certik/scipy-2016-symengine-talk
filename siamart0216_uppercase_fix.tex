@@ -1,0 +1,7 @@
+% The SIAM's stylesheet uses \uppercase instead of \MakeUppercase, so unicode
+% characters are not converted to uppercase. The fix here was suggested at:
+% http://tex.stackexchange.com/questions/289465/stylesheet-does-not-capitalize-polish-letters-correctly
+
+\makeatletter
+\def\@ucnt#1\thanks{\MakeUppercase{#1}\futurelet\@tempa\@ucnta}
+\makeatother
